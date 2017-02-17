@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,13 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     @Override
     public void onBindViewHolder(HeadwearViewHolder holder, int position) {
         holder.mIconImg.setImageResource(mSinglePageIconList.get(position).getmResId());
+        if (position == getChosenIcon()) {
+            holder.mBgLayout.setBackgroundResource(R.drawable.bg_headwear);
+        }
+    }
+
+    private int getChosenIcon() {
+        return 0;
     }
 
     @Override
@@ -47,9 +55,11 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     class HeadwearViewHolder extends RecyclerView.ViewHolder {
 
         ImageView mIconImg;
+        RelativeLayout mBgLayout;
         public HeadwearViewHolder(View itemView) {
             super(itemView);
             mIconImg = (ImageView) itemView.findViewById(R.id.headwear_item);
+            mBgLayout = (RelativeLayout) itemView.findViewById(R.id.bg_item_headwear);
         }
     }
 

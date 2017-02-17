@@ -56,6 +56,8 @@ public class HeadWearDialog  extends Dialog{
         mHeadwearPager = (SSViewPager) findViewById(R.id.headwear_pager);
         HeadwearPagerAdapter headwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager);
         headwearPagerAdapter.setIconList(mIconList);
+        mViewPagerShower.initDrawable(mContext.getResources().getDrawable(R.drawable.bg_dot_normal),
+                mContext.getResources().getDrawable(R.drawable.bg_dot_selected));
         mViewPagerShower.initViews(headwearPagerAdapter.getPageCount(), 0);
         mHeadwearPager.setAdapter(headwearPagerAdapter);
         mHeadwearPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
