@@ -24,7 +24,7 @@ public class HeadWearDialog  extends Dialog{
     private ViewPagerShower mViewPagerShower;
     //获取头饰icons。
     private IGetHeadwearImg mGetHeadwearImg;
-    private List<ImageView> mIconList;
+    private List<Headwear> mIconList;
     private Context mContext;
     public void setGetHeadwearImg(IGetHeadwearImg getHeadwearImg) {
         mGetHeadwearImg = getHeadwearImg;

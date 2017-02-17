@@ -3,7 +3,6 @@ package com.example.yangyang.viewpagerdemo;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 头饰界面 recylerView adapter
  * Created by yangyang on 2017/2/17.
  */
 
@@ -20,8 +20,7 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     private final static String TAG = HeadwearRecylerAdapter.class.getSimpleName();
     private Context mContext;
     private LayoutInflater mInflater;
-    // TODO: 2017/2/17 ImageView向上抽象，以便接入fresco。
-    private List<ImageView> mSinglePageIconList;
+    private List<Headwear> mSinglePageIconList;
     private ViewPager mViewPager;
     public HeadwearRecylerAdapter(Context context, ViewPager viewPager) {
         mSinglePageIconList = new ArrayList<>();
@@ -37,7 +36,7 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
 
     @Override
     public void onBindViewHolder(HeadwearViewHolder holder, int position) {
-        holder.mIconImg.setImageResource(R.drawable.ic_tab_user);
+        holder.mIconImg.setImageResource(mSinglePageIconList.get(position).getmResId());
     }
 
     @Override
@@ -54,7 +53,7 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         }
     }
 
-    public void addForSinglePage(List<ImageView> singlePageIconList) {
+    public void addForSinglePage(List<Headwear> singlePageIconList) {
         mSinglePageIconList.clear();
         mSinglePageIconList.addAll(singlePageIconList);
         notifyDataSetChanged();

@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 头饰 viewPager adapter
  * Created by yangyang on 2017/2/17.
  */
 
@@ -20,7 +20,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     private static final String TAG = HeadwearPagerAdapter.class.getSimpleName();
     private Context mContext;
     private ViewPager mViewPager;
-    private List<ImageView> mIconList;
+    private List<Headwear> mIconList;
     public HeadwearPagerAdapter(Context context, ViewPager viewPager) {
         super(LayoutInflater.from(context), context);
         mContext = context;
@@ -46,10 +46,10 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
         return convertView;
     }
 
-    private List<ImageView> getIconsForCurPage(int position) {
+    private List<Headwear> getIconsForCurPage(int position) {
         int start = position * HeadWearDialog.PAGE_SIZE;
         int end = Math.min(start + HeadWearDialog.PAGE_SIZE, mIconList.size());
-        List<ImageView> tmpList = new ArrayList<>();
+        List<Headwear> tmpList = new ArrayList<>();
         for (int i = start; i < end; i++) {
             tmpList.add(mIconList.get(i));
         }
@@ -69,7 +69,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
         return count;
     }
 
-    public void setIconList(List<ImageView> iconList) {
+    public void setIconList(List<Headwear> iconList) {
         mIconList = iconList;
     }
     static class HeadwearPageViewHolder{

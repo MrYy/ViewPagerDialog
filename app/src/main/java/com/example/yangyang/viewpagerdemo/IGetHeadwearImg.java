@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface IGetHeadwearImg {
-    List<ImageView> getImg();
+    List<Headwear> getImg();
 }

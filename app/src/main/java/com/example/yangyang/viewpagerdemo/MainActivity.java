@@ -27,22 +27,18 @@ public class MainActivity extends AppCompatActivity {
                 if (editStr.length() > 0) mWearCount = Integer.parseInt(editStr);
                 showHeadwearDialog(MainActivity.this,new IGetHeadwearImg() {
                     @Override
-                    public List<ImageView> getImg() {
+                    public List<Headwear> getImg() {
 
-                        List<ImageView> list = new ArrayList<>();
+                        List<Headwear> list = new ArrayList<>();
                         for (int i = 0; i < mWearCount; i++) {
-                            list.add(getSingleImg());
+                            Headwear headwear = new Headwear();
+                            headwear.setmResId(R.drawable.ic_tab_user);
+                            list.add(headwear);
                         }
                         return list;
                     }
 
-                    private ImageView getSingleImg() {
-                        Drawable drawble = getResources().getDrawable(R.drawable.ic_tab_user);
-                        ImageView img = new ImageView(MainActivity.this);
-                        img.setImageResource(R.drawable.ic_tab_user);
-                        img.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                        return img;
-                    }
+
                 });
             }
         });
