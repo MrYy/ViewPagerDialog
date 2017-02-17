@@ -4,6 +4,7 @@
     android:background="@color/hs_s1_90"
     android:layout_height="280dp">
 <com.example.yangyang.viewpagerdemo.SSViewPager
+    android:id="@+id/headwear_pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"></com.example.yangyang.viewpagerdemo.SSViewPager>
 </FrameLayout>
