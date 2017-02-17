@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mActivity = this;
 
+        ((ViewPagerShower) findViewById(R.id.desktop_shower)).initViews(2, 0);
         final HeadWearDialog headWearDialog = new HeadWearDialog(mActivity, R.style.headwear_dialog);
         headWearDialog.setGetHeadwearImg(new IGetHeadwearImg() {
             @Override

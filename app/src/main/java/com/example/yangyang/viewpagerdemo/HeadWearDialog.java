@@ -19,6 +19,7 @@ public class HeadWearDialog  extends Dialog{
     private static final String TAG = HeadWearDialog.class.getSimpleName();
     // TODO: 2017/2/17 主要逻辑先放在dialog中，后续抽离presenter。
     private SSViewPager mHeadwearPager;
+    private ViewPagerShower mViewPagerShower;
     //获取头饰icons。
     private IGetHeadwearImg mGetHeadwearImg;
     private List<ImageView> mIconList;
@@ -48,6 +49,9 @@ public class HeadWearDialog  extends Dialog{
     }
 
     private void initView() {
+        mViewPagerShower = (ViewPagerShower) findViewById(R.id.headwear_pager_shower);
+
+        mViewPagerShower.initViews(2, 0);
         mHeadwearPager = (SSViewPager) findViewById(R.id.headwear_pager);
         HeadwearPagerAdapter headwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager);
         headwearPagerAdapter.setIconList(mIconList);
@@ -61,6 +65,7 @@ public class HeadWearDialog  extends Dialog{
             @Override
             public void onPageSelected(int position) {
                 Log.d(TAG, String.valueOf(position));
+                mViewPagerShower.onPageSelect(position);
             }
 
             @Override

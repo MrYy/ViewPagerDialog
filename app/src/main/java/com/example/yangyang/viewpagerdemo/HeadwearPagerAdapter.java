@@ -31,7 +31,6 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     @Override
     protected View getView(int position, View convertView, ViewGroup parent) {
         //采用holder模式
-        Log.d(TAG, "get view");
 
         HeadwearPageViewHolder viewHolder;
         if (convertView == null) {
@@ -52,7 +51,6 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
         int totalSize = mIconList.size();
         count += totalSize / PAGE_SIZE;
         if (totalSize % PAGE_SIZE > 0) count++;
-        Log.d(TAG, String.valueOf(count));
         return count;
     }
 
