@@ -17,6 +17,8 @@ import java.util.List;
 
 public class HeadWearDialog  extends Dialog{
     private static final String TAG = HeadWearDialog.class.getSimpleName();
+
+    public static final int PAGE_SIZE = 8;
     // TODO: 2017/2/17 主要逻辑先放在dialog中，后续抽离presenter。
     private SSViewPager mHeadwearPager;
     private ViewPagerShower mViewPagerShower;
@@ -51,10 +53,10 @@ public class HeadWearDialog  extends Dialog{
     private void initView() {
         mViewPagerShower = (ViewPagerShower) findViewById(R.id.headwear_pager_shower);
 
-        mViewPagerShower.initViews(2, 0);
         mHeadwearPager = (SSViewPager) findViewById(R.id.headwear_pager);
         HeadwearPagerAdapter headwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager);
         headwearPagerAdapter.setIconList(mIconList);
+        mViewPagerShower.initViews(headwearPagerAdapter.getPageCount(), 0);
         mHeadwearPager.setAdapter(headwearPagerAdapter);
         mHeadwearPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

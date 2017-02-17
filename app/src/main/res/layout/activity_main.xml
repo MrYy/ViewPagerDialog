@@ -3,16 +3,22 @@
 android:orientation="vertical" android:layout_width="match_parent"
 android:background="@drawable/ic_splash"
 android:layout_height="match_parent">
-<com.example.yangyang.viewpagerdemo.ViewPagerShower
-    android:id="@+id/desktop_shower"
-    android:gravity="center"
-    android:visibility="gone"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"></com.example.yangyang.viewpagerdemo.ViewPagerShower>
 
+    <EditText
+        android:textSize="24dp"
+        android:id="@+id/edit_wear_count"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:hint="输入头饰总数"
+        android:background="@color/white"
+        android:inputType="number"
+        android:layout_height="wrap_content" />
 <Button
     android:id="@+id/btn_pop"
     android:text="pop"
-    android:layout_width="wrap_content"
+    android:layout_below="@id/edit_wear_count"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content" />
+
+
 </RelativeLayout>

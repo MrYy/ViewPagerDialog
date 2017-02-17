@@ -4,12 +4,12 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +21,6 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     private Context mContext;
     private ViewPager mViewPager;
     private List<ImageView> mIconList;
-    private static final int PAGE_SIZE = 8;
     public HeadwearPagerAdapter(Context context, ViewPager viewPager) {
         super(LayoutInflater.from(context), context);
         mContext = context;
@@ -31,26 +30,42 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     @Override
     protected View getView(int position, View convertView, ViewGroup parent) {
         //采用holder模式
-
         HeadwearPageViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new HeadwearPageViewHolder();
-            convertView = mInflater.inflate(R.layout.item_headwear_dialog_page, null);
-//            viewHolder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.headwear_page_list);
-//            viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 4, GridLayoutManager.VERTICAL, false));
+            convertView = mInflater.inflate(R.layout.list_headwear_dialog_page, null);
+            viewHolder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.headwear_page_list);
+            viewHolder.mRecylerAdapter = new HeadwearRecylerAdapter(mContext, mViewPager);
+            viewHolder.mRecyclerView.setAdapter(viewHolder.mRecylerAdapter);
+            viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 4, GridLayoutManager.VERTICAL, false));
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (HeadwearPageViewHolder) convertView.getTag();
         }
+        viewHolder.mRecylerAdapter.addForSinglePage(getIconsForCurPage(position));
         return convertView;
+    }
+
+    private List<ImageView> getIconsForCurPage(int position) {
+        int start = position * HeadWearDialog.PAGE_SIZE;
+        int end = Math.min(start + HeadWearDialog.PAGE_SIZE, mIconList.size());
+        List<ImageView> tmpList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            tmpList.add(mIconList.get(i));
+        }
+        return tmpList;
+    }
+
+    public int getPageCount() {
+        return getCount();
     }
 
     @Override
     public int getCount() {
         int count = 0;
         int totalSize = mIconList.size();
-        count += totalSize / PAGE_SIZE;
-        if (totalSize % PAGE_SIZE > 0) count++;
+        count += totalSize / HeadWearDialog.PAGE_SIZE;
+        if (totalSize % HeadWearDialog.PAGE_SIZE > 0) count++;
         return count;
     }
 
@@ -59,6 +74,6 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     }
     static class HeadwearPageViewHolder{
         RecyclerView mRecyclerView;
-
+        HeadwearRecylerAdapter mRecylerAdapter;
     }
 }

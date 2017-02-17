@@ -40,7 +40,12 @@ public abstract class AbsPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
+        if (object == null) {
+            return;
+        }
+        View view = (View) object;
+        container.removeView(view);
+        mScrapViews.add(view);
     }
 
     protected abstract View getView(int position, View convertView, ViewGroup parent);
