@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.yangyang.viewpagerdemo.model.Headwear;
 import com.example.yangyang.viewpagerdemo.widget.HeadWearDialog;
 import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Fresco.initialize(this);
         final EditText mEditText = (EditText) findViewById(R.id.edit_wear_count);
         findViewById(R.id.btn_pop).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         List<Headwear> list = new ArrayList<>();
                         for (int i = 0; i < mWearCount; i++) {
                             Headwear headwear = new Headwear();
-                            headwear.setmResId(R.drawable.item_icon);
+                            headwear.setUri("http://d.lanrentuku.com/down/png/1610/50space-elements/rocket-ship-2.png");
                             if (i % 3 == 0) headwear.setNotDownload(true);
                             list.add(headwear);
                         }

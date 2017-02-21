@@ -21,7 +21,7 @@ import java.util.List;
 
 public class HeadWearDialog extends Dialog {
     private static final String TAG = HeadWearDialog.class.getSimpleName();
-    private int NONE_SELECT_ICON = R.drawable.none;
+    private static final String NONE_SELECT_ICON = "res:/" + R.drawable.none;
     public static final int PAGE_SIZE = 8;
     // TODO: 2017/2/17 主要逻辑先放在dialog中，后续抽离presenter。
     private SSViewPager mHeadwearPager;
@@ -54,7 +54,7 @@ public class HeadWearDialog extends Dialog {
         //第一个是没有选择头饰。
         Headwear noneSelect = new Headwear();
         noneSelect.setSelected(true);
-        noneSelect.setmResId(NONE_SELECT_ICON);
+        noneSelect.setUri(NONE_SELECT_ICON);
         mIconList.add(0, noneSelect);
     }
 

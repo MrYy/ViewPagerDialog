@@ -5,7 +5,8 @@ package com.example.yangyang.viewpagerdemo.model;
  */
 
 public class Headwear {
-    private int mResId;
+
+    private String mUri;
     private boolean isSelected;
     private boolean notDownload;
 
@@ -26,11 +27,13 @@ public class Headwear {
         isSelected = selected;
     }
 
-    public void setmResId(int resId) {
-        mResId = resId;
+    public String getUri() {
+        return mUri;
     }
 
-    public int getmResId() {
-        return mResId;
+    public void setUri(String uri) {
+        mUri = uri;
     }
+
+
 }

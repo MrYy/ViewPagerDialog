@@ -18,7 +18,7 @@
             android:layout_width="65dp"
             android:layout_height="65dp">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:layout_centerInParent="true"
             android:id="@+id/headwear_item_img"
             android:layout_width="50dp"

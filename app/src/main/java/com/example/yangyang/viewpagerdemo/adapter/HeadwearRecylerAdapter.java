@@ -1,6 +1,7 @@
 package com.example.yangyang.viewpagerdemo.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
 import com.example.yangyang.viewpagerdemo.R;
 import com.example.yangyang.viewpagerdemo.model.Headwear;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +58,10 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         holder.mNotDownloadIcon.setBackgroundResource(curSelect.isNotDownload() ? NOT_DOWNLOAD_ICON : 0);
     }
 
+    //向fresco中设置图片
     private void setImage(HeadwearViewHolder holder, Headwear curSelect) {
-        holder.mIconImg.setImageResource(curSelect.getmResId());
+        Uri uri = Uri.parse(curSelect.getUri());
+        holder.mIconImg.setImageURI(uri);
     }
 
 
@@ -83,13 +87,13 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
 
     class HeadwearViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mIconImg;
+        SimpleDraweeView mIconImg;
         RelativeLayout mBgLayout;
         ImageView mNotDownloadIcon;
 
         public HeadwearViewHolder(View itemView) {
             super(itemView);
-            mIconImg = (ImageView) itemView.findViewById(R.id.headwear_item_img);
+            mIconImg = (SimpleDraweeView) itemView.findViewById(R.id.headwear_item_img);
             mBgLayout = (RelativeLayout) itemView.findViewById(R.id.headwear_item_bg);
             mNotDownloadIcon = (ImageView) itemView.findViewById(R.id.headwear_not_download_img);
         }
