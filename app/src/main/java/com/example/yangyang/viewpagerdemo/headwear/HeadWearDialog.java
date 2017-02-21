@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo.widget;
+package com.example.yangyang.viewpagerdemo.headwear;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,8 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.WindowManager;
 
-import com.example.yangyang.viewpagerdemo.model.Headwear;
-import com.example.yangyang.viewpagerdemo.adapter.HeadwearPagerAdapter;
 import com.example.yangyang.viewpagerdemo.R;
 import com.example.yangyang.viewpagerdemo.sdk.SSViewPager;
 import com.example.yangyang.viewpagerdemo.sdk.ViewPagerShower;

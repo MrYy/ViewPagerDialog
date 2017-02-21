@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo.model;
+package com.example.yangyang.viewpagerdemo.headwear;
 
 /**
  * Created by yangyang on 2017/2/17.
@@ -23,12 +23,12 @@ public class Headwear {
         this.notDownload = notDownload;
     }
 
-    public boolean isSelected() {
+    protected boolean isSelected() {
         return isSelected;
     }
 
 
-    public void setSelected(boolean selected) {
+    protected void setSelected(boolean selected) {
         isSelected = selected;
     }
 

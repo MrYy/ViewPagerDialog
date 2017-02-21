@@ -1,6 +1,4 @@
-package com.example.yangyang.viewpagerdemo.widget;
-
-import com.example.yangyang.viewpagerdemo.model.Headwear;
+package com.example.yangyang.viewpagerdemo.headwear;
 
 import java.util.List;
 

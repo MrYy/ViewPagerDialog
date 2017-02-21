@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo.adapter;
+package com.example.yangyang.viewpagerdemo.headwear;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -9,10 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.yangyang.viewpagerdemo.sdk.AbsPagerAdapter;
-import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
 import com.example.yangyang.viewpagerdemo.R;
-import com.example.yangyang.viewpagerdemo.model.Headwear;
-import com.example.yangyang.viewpagerdemo.widget.HeadWearDialog;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo.adapter;
+package com.example.yangyang.viewpagerdemo.headwear;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
 import com.example.yangyang.viewpagerdemo.R;
-import com.example.yangyang.viewpagerdemo.model.Headwear;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.ArrayList;
