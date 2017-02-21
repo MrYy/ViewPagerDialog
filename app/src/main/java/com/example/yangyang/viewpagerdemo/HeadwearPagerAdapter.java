@@ -16,17 +16,46 @@ import java.util.List;
  * Created by yangyang on 2017/2/17.
  */
 
-public class HeadwearPagerAdapter extends AbsPagerAdapter {
+public class HeadwearPagerAdapter extends AbsPagerAdapter  {
     private static final String TAG = HeadwearPagerAdapter.class.getSimpleName();
     private Context mContext;
     private ViewPager mViewPager;
     private List<Headwear> mIconList;
-    private IHeadwear mHeadwearInterface;
+    private IHeadwear mIHeadwear;
+    //每行有多少icon。
+    private int LINE_SIZE = 4;
+
+    //每一页recylerview的adapter
+    private List<HeadwearRecylerAdapter> mPageAdapterList;
+    //上一次选择的头饰。
+    private Headwear mLastSelectHeadwear;
+
+    private SelectHeadwearInterface mISelectHeadwear;
+
+    interface SelectHeadwearInterface {
+        void select(Headwear headwear);
+    }
     public HeadwearPagerAdapter(Context context, ViewPager viewPager, IHeadwear headwearInterface) {
         super(LayoutInflater.from(context), context);
         mContext = context;
         mViewPager = viewPager;
-        mHeadwearInterface = headwearInterface;
+        mIHeadwear = headwearInterface;
+        init();
+    }
+
+    private void init() {
+        mPageAdapterList = new ArrayList<>();
+        mISelectHeadwear = new SelectHeadwearInterface() {
+            @Override
+            public void select(Headwear headwear) {
+                mLastSelectHeadwear.setSelected(false);
+                headwear.setSelected(true);
+                mLastSelectHeadwear = headwear;
+                for (HeadwearRecylerAdapter adapter : mPageAdapterList) {
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        };
     }
 
     @Override
@@ -37,9 +66,10 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
             viewHolder = new HeadwearPageViewHolder();
             convertView = mInflater.inflate(R.layout.list_headwear_dialog_page, null);
             viewHolder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.headwear_page_list);
-            viewHolder.mRecylerAdapter = new HeadwearRecylerAdapter(mContext, mViewPager, mHeadwearInterface);
+            viewHolder.mRecylerAdapter = new HeadwearRecylerAdapter(mContext, mViewPager, mIHeadwear, mISelectHeadwear);
+            mPageAdapterList.add(viewHolder.mRecylerAdapter);
             viewHolder.mRecyclerView.setAdapter(viewHolder.mRecylerAdapter);
-            viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 4, GridLayoutManager.VERTICAL, false));
+            viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, LINE_SIZE, GridLayoutManager.VERTICAL, false));
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (HeadwearPageViewHolder) convertView.getTag();
@@ -75,6 +105,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
 
     public void setIconList(List<Headwear> iconList) {
         mIconList = iconList;
+        mLastSelectHeadwear = iconList.get(0);
     }
     static class HeadwearPageViewHolder{
         RecyclerView mRecyclerView;

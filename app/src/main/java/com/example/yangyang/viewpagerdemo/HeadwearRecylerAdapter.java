@@ -24,13 +24,14 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     private List<Headwear> mSinglePageIconList;
     private ViewPager mViewPager;
     private IHeadwear mIHeadwear;
-
-    public HeadwearRecylerAdapter(Context context, ViewPager viewPager, IHeadwear iHeadwear) {
+    private HeadwearPagerAdapter.SelectHeadwearInterface mISelectHeadwear;
+    public HeadwearRecylerAdapter(Context context, ViewPager viewPager, IHeadwear iHeadwear, HeadwearPagerAdapter.SelectHeadwearInterface ISelectHeadwear) {
         mSinglePageIconList = new ArrayList<>();
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mViewPager = viewPager;
         mIHeadwear = iHeadwear;
+        mISelectHeadwear = ISelectHeadwear;
     }
 
     @Override
@@ -59,15 +60,13 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         int position = (int) v.getTag();
         Headwear curSelect = mSinglePageIconList.get(position);
         if (curSelect.isSelected()) return;
-        refreshIconStatus();
-        curSelect.setSelected(true);
+        mISelectHeadwear.select(curSelect);
         if (position == 0) {
             //0的位置是不选择头饰
             mIHeadwear.selectNoneHeadwear();
         } else {
             mIHeadwear.selectHeadwear(curSelect);
         }
-        notifyDataSetChanged();
     }
 
     // TODO: 2017/2/21  暂时遍历，后续可优化为记录上一次选择。
