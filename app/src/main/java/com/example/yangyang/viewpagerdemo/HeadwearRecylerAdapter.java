@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by yangyang on 2017/2/17.
  */
 
-public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecylerAdapter.HeadwearViewHolder> {
+public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecylerAdapter.HeadwearViewHolder> implements View.OnClickListener {
     private final static String TAG = HeadwearRecylerAdapter.class.getSimpleName();
     private Context mContext;
     private LayoutInflater mInflater;
@@ -37,10 +38,11 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
 
     @Override
     public void onBindViewHolder(HeadwearViewHolder holder, int position) {
+        Headwear curHeadwear = mSinglePageIconList.get(position);
         holder.mIconImg.setImageResource(mSinglePageIconList.get(position).getmResId());
-        if (position == getChosenIcon()) {
-            holder.mBgLayout.setBackgroundResource(R.drawable.bg_headwear);
-        }
+        holder.mIconImg.setOnClickListener(this);
+        holder.mIconImg.setBackgroundResource(curHeadwear.isSelected() ? R.drawable.headwear_circle : 0);
+
     }
 
     private int getChosenIcon() {
@@ -50,6 +52,11 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     @Override
     public int getItemCount() {
         return mSinglePageIconList.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     class HeadwearViewHolder extends RecyclerView.ViewHolder {

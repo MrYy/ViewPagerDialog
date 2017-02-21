@@ -6,6 +6,15 @@ package com.example.yangyang.viewpagerdemo;
 
 public class Headwear {
     private int mResId;
+    private boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public void setmResId(int resId) {
         mResId = resId;
