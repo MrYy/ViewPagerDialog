@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
-import android.widget.ImageView;
 
 import java.util.List;
 
@@ -23,22 +22,21 @@ public class HeadWearDialog  extends Dialog{
     private SSViewPager mHeadwearPager;
     private ViewPagerShower mViewPagerShower;
     //获取头饰icons。
-    private IGetHeadwearImg mGetHeadwearImg;
+    private IHeadwear mHeadwearInterface;
     private List<Headwear> mIconList;
     private Context mContext;
-    public void setGetHeadwearImg(IGetHeadwearImg getHeadwearImg) {
-        mGetHeadwearImg = getHeadwearImg;
-    }
 
-    public HeadWearDialog(Context context, int themeResId) {
-        super(context, themeResId);
+    public HeadWearDialog(Context context, IHeadwear headwearInterface) {
+        super(context, R.style.headwear_dialog);
         mContext = context;
+        mHeadwearInterface = headwearInterface;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_headwear);
+        setCanceledOnTouchOutside(true);
         //设置dialog的外层window的大小。
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         getWindow().setGravity(Gravity.BOTTOM);
@@ -47,14 +45,15 @@ public class HeadWearDialog  extends Dialog{
     }
 
     private void modelProcess() {
-        mIconList = mGetHeadwearImg.getImg();
+        mIconList = mHeadwearInterface.getHeadwear();
     }
 
     private void initView() {
         mViewPagerShower = (ViewPagerShower) findViewById(R.id.headwear_pager_shower);
 
         mHeadwearPager = (SSViewPager) findViewById(R.id.headwear_pager);
-        HeadwearPagerAdapter headwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager);
+        HeadwearPagerAdapter headwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager, mHeadwearInterface);
+
         headwearPagerAdapter.setIconList(mIconList);
         mViewPagerShower.initDrawable(mContext.getResources().getDrawable(R.drawable.bg_dot_normal),
                 mContext.getResources().getDrawable(R.drawable.bg_dot_selected));

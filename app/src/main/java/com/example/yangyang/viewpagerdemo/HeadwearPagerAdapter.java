@@ -22,11 +22,12 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     private ViewPager mViewPager;
     private List<Headwear> mIconList;
     private int NONE_SELECT_ICON = R.drawable.bg_dot_normal;
-
-    public HeadwearPagerAdapter(Context context, ViewPager viewPager) {
+    private IHeadwear mHeadwearInterface;
+    public HeadwearPagerAdapter(Context context, ViewPager viewPager, IHeadwear headwearInterface) {
         super(LayoutInflater.from(context), context);
         mContext = context;
         mViewPager = viewPager;
+        mHeadwearInterface = headwearInterface;
     }
 
     @Override
@@ -37,7 +38,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
             viewHolder = new HeadwearPageViewHolder();
             convertView = mInflater.inflate(R.layout.list_headwear_dialog_page, null);
             viewHolder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.headwear_page_list);
-            viewHolder.mRecylerAdapter = new HeadwearRecylerAdapter(mContext, mViewPager);
+            viewHolder.mRecylerAdapter = new HeadwearRecylerAdapter(mContext, mViewPager, mHeadwearInterface);
             viewHolder.mRecyclerView.setAdapter(viewHolder.mRecylerAdapter);
             viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 4, GridLayoutManager.VERTICAL, false));
             convertView.setTag(viewHolder);
