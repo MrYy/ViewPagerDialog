@@ -21,7 +21,6 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     private Context mContext;
     private ViewPager mViewPager;
     private List<Headwear> mIconList;
-    private int NONE_SELECT_ICON = R.drawable.bg_dot_normal;
     private IHeadwear mHeadwearInterface;
     public HeadwearPagerAdapter(Context context, ViewPager viewPager, IHeadwear headwearInterface) {
         super(LayoutInflater.from(context), context);
@@ -50,13 +49,10 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     }
 
     private List<Headwear> getIconsForCurPage(int position) {
-        int start = position * (HeadWearDialog.PAGE_SIZE - 1);
-        int end = Math.min(start + HeadWearDialog.PAGE_SIZE - 1, mIconList.size());
+        int start = position * (HeadWearDialog.PAGE_SIZE);
+        int end = Math.min(start + HeadWearDialog.PAGE_SIZE, mIconList.size());
         List<Headwear> tmpList = new ArrayList<>();
-        Headwear noneSelect = new Headwear();
-        noneSelect.setSelected(true);
-        noneSelect.setmResId(NONE_SELECT_ICON);
-        tmpList.add(noneSelect);
+
         for (int i = start; i < end; i++) {
             tmpList.add(mIconList.get(i));
         }
@@ -72,8 +68,8 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
         //每页第一个为默认icon。即不选择头饰。
         int count = 0;
         int totalSize = mIconList.size();
-        count += totalSize / (HeadWearDialog.PAGE_SIZE - 1);
-        if (totalSize % (HeadWearDialog.PAGE_SIZE - 1) > 0) count++;
+        count += totalSize / HeadWearDialog.PAGE_SIZE;
+        if (totalSize % HeadWearDialog.PAGE_SIZE > 0) count++;
         return count;
     }
 

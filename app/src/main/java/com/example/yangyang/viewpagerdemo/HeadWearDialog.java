@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class HeadWearDialog  extends Dialog{
     private static final String TAG = HeadWearDialog.class.getSimpleName();
-
+    private int NONE_SELECT_ICON = R.drawable.bg_dot_normal;
     public static final int PAGE_SIZE = 8;
     // TODO: 2017/2/17 主要逻辑先放在dialog中，后续抽离presenter。
     private SSViewPager mHeadwearPager;
@@ -40,12 +41,17 @@ public class HeadWearDialog  extends Dialog{
         //设置dialog的外层window的大小。
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         getWindow().setGravity(Gravity.BOTTOM);
-        modelProcess();
+        getIcons();
         initView();
     }
 
-    private void modelProcess() {
+    private void getIcons() {
         mIconList = mHeadwearInterface.getHeadwear();
+        //第一个是没有选择头饰。
+        Headwear noneSelect = new Headwear();
+        noneSelect.setSelected(true);
+        noneSelect.setmResId(NONE_SELECT_ICON);
+        mIconList.add(0, noneSelect);
     }
 
     private void initView() {
