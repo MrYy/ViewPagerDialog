@@ -11,8 +11,8 @@
                 <ImageView
                     android:id="@+id/headwear_not_download_img"
                     android:layout_gravity="bottom|right"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp" />
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
         <RelativeLayout
             android:id="@+id/headwear_item_bg"
             android:layout_width="65dp"

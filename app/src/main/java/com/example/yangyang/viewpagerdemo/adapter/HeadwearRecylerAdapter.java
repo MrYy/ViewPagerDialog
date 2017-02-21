@@ -49,11 +49,15 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     @Override
     public void onBindViewHolder(HeadwearViewHolder holder, int position) {
         Headwear curSelect = mSinglePageIconList.get(position);
-        holder.mIconImg.setImageResource(mSinglePageIconList.get(position).getmResId());
+        setImage(holder, curSelect);
         holder.mIconImg.setTag(position);
         holder.mIconImg.setOnClickListener(this);
         holder.mBgLayout.setBackgroundResource(curSelect.isSelected() ? BACKGROUND_ICON : 0);
         holder.mNotDownloadIcon.setBackgroundResource(curSelect.isNotDownload() ? NOT_DOWNLOAD_ICON : 0);
+    }
+
+    private void setImage(HeadwearViewHolder holder, Headwear curSelect) {
+        holder.mIconImg.setImageResource(curSelect.getmResId());
     }
 
 

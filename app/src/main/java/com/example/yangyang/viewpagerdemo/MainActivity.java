@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                         List<Headwear> list = new ArrayList<>();
                         for (int i = 0; i < mWearCount; i++) {
                             Headwear headwear = new Headwear();
-                            headwear.setmResId(R.drawable.ic_tab_user);
+                            headwear.setmResId(R.drawable.item_icon);
                             if (i % 3 == 0) headwear.setNotDownload(true);
                             list.add(headwear);
                         }

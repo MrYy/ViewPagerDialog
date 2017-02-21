@@ -21,7 +21,7 @@ import java.util.List;
 
 public class HeadWearDialog extends Dialog {
     private static final String TAG = HeadWearDialog.class.getSimpleName();
-    private int NONE_SELECT_ICON = R.drawable.bg_dot_normal;
+    private int NONE_SELECT_ICON = R.drawable.none;
     public static final int PAGE_SIZE = 8;
     // TODO: 2017/2/17 主要逻辑先放在dialog中，后续抽离presenter。
     private SSViewPager mHeadwearPager;
