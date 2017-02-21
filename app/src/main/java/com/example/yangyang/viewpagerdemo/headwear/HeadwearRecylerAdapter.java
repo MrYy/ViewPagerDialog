@@ -25,6 +25,7 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     private static final int BACKGROUND_ICON = R.drawable.headwear_circle;
     private static final int NOT_DOWNLOAD_ICON = R.drawable.not_download;
     private final static String TAG = HeadwearRecylerAdapter.class.getSimpleName();
+    private final int mPageIndex;
     private Context mContext;
     private LayoutInflater mInflater;
     private List<Headwear> mSinglePageIconList;
@@ -32,13 +33,14 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     private IHeadwear mIHeadwear;
     private HeadwearPagerAdapter.SelectHeadwearInterface mISelectHeadwear;
 
-    public HeadwearRecylerAdapter(Context context, ViewPager viewPager, IHeadwear iHeadwear, HeadwearPagerAdapter.SelectHeadwearInterface ISelectHeadwear) {
+    public HeadwearRecylerAdapter(int pageIndex, Context context, ViewPager viewPager, IHeadwear iHeadwear, HeadwearPagerAdapter.SelectHeadwearInterface ISelectHeadwear) {
         mSinglePageIconList = new ArrayList<>();
         mContext = context;
         mInflater = LayoutInflater.from(mContext);
         mViewPager = viewPager;
         mIHeadwear = iHeadwear;
         mISelectHeadwear = ISelectHeadwear;
+        mPageIndex = pageIndex;
     }
 
     @Override
@@ -74,8 +76,8 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         Headwear curSelect = mSinglePageIconList.get(position);
         if (curSelect.isSelected()) return;
         mISelectHeadwear.select(curSelect);
-        if (position == 0) {
-            //0的位置是不选择头饰
+        if (mPageIndex == 0 && position == 0) {
+            //第一页，0的位置是不选择头饰
             mIHeadwear.selectNoneHeadwear();
         } else {
             mIHeadwear.selectHeadwear(curSelect);
@@ -100,7 +102,6 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     public void addForSinglePage(List<Headwear> singlePageIconList) {
         mSinglePageIconList.clear();
         mSinglePageIconList.addAll(singlePageIconList);
-        notifyDataSetChanged();
     }
 
 }

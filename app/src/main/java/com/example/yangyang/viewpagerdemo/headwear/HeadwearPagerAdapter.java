@@ -12,7 +12,9 @@ import com.example.yangyang.viewpagerdemo.sdk.AbsPagerAdapter;
 import com.example.yangyang.viewpagerdemo.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 头饰 viewPager adapter
@@ -29,7 +31,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     //每行有多少icon。
 
     //每一页recylerview的adapter
-    private List<HeadwearRecylerAdapter> mPageAdapterList;
+    private Map<Integer, HeadwearRecylerAdapter> mPageAdapterMap;
     //上一次选择的头饰。
     private Headwear mLastSelectHeadwear;
 
@@ -47,14 +49,14 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     }
 
     private void init() {
-        mPageAdapterList = new ArrayList<>();
+        mPageAdapterMap = new HashMap<>();
         mISelectHeadwear = new SelectHeadwearInterface() {
             @Override
             public void select(Headwear headwear) {
                 mLastSelectHeadwear.setSelected(false);
                 headwear.setSelected(true);
                 mLastSelectHeadwear = headwear;
-                for (HeadwearRecylerAdapter adapter : mPageAdapterList) {
+                for (HeadwearRecylerAdapter adapter : mPageAdapterMap.values()) {
                     adapter.notifyDataSetChanged();
                 }
             }
@@ -69,15 +71,19 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
             viewHolder = new HeadwearPageViewHolder();
             convertView = mInflater.inflate(R.layout.list_headwear_dialog_page, null);
             viewHolder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.headwear_page_list);
-            viewHolder.mRecylerAdapter = new HeadwearRecylerAdapter(mContext, mViewPager, mIHeadwear, mISelectHeadwear);
-            mPageAdapterList.add(viewHolder.mRecylerAdapter);
-            viewHolder.mRecyclerView.setAdapter(viewHolder.mRecylerAdapter);
             viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, LINE_SIZE, GridLayoutManager.VERTICAL, false));
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (HeadwearPageViewHolder) convertView.getTag();
         }
+
+        if (!mPageAdapterMap.containsKey(position)){
+            //每个页面仅有一个adapter, adapter 不可以复用
+            mPageAdapterMap.put(position, new HeadwearRecylerAdapter(position, mContext, mViewPager, mIHeadwear, mISelectHeadwear));
+        }
+        viewHolder.mRecylerAdapter = mPageAdapterMap.get(position);
         viewHolder.mRecylerAdapter.addForSinglePage(getIconsForCurPage(position));
+        viewHolder.mRecyclerView.setAdapter(viewHolder.mRecylerAdapter);
         return convertView;
     }
 
@@ -114,7 +120,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
     public void finishDownload(int selected, Headwear headwear) {
         if (!headwear.isNotDownload()) return;
         headwear.setNotDownload(false);
-        mPageAdapterList.get(selected).notifyDataSetChanged();
+        mPageAdapterMap.get(selected).notifyDataSetChanged();
     }
 
     static class HeadwearPageViewHolder{
