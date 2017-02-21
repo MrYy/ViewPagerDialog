@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo;
+package com.example.yangyang.viewpagerdemo.sdk;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

@@ -1,15 +1,24 @@
 package com.example.yangyang.viewpagerdemo;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.yangyang.viewpagerdemo.model.Headwear;
+import com.example.yangyang.viewpagerdemo.widget.HeadWearDialog;
+import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 使用方法。
+ * 实例化HeadwearDialog
+ * 给入接口，获取headwear，目前是设置resource ID，
+ */
 public class MainActivity extends AppCompatActivity {
     private int mWearCount = 16;
 
@@ -23,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String editStr = mEditText.getText().toString().trim();
                 if (editStr.length() > 0) mWearCount = Integer.parseInt(editStr);
-                showHeadwearDialog(MainActivity.this,new IHeadwear() {
+                showHeadwearDialog(MainActivity.this, new IHeadwear() {
                     @Override
                     public List<Headwear> getHeadwear() {
-
                         List<Headwear> list = new ArrayList<>();
                         for (int i = 0; i < mWearCount; i++) {
                             Headwear headwear = new Headwear();
                             headwear.setmResId(R.drawable.ic_tab_user);
+                            if (i % 3 == 0) headwear.setNotDownload(true);
                             list.add(headwear);
                         }
                         return list;
@@ -38,12 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void selectNoneHeadwear() {
-                        Toast.makeText(MainActivity.this, "取消头饰选择", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void selectHeadwear(Headwear headwear) {
-                        Toast.makeText(MainActivity.this, "选择头饰：" + headwear.getmResId(), Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -52,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
 
+    //使用方法。
     private void showHeadwearDialog(final Context context, IHeadwear iHeadwear) {
         HeadWearDialog headWearDialog = new HeadWearDialog(context, iHeadwear);
         //设置图片资源drawable数组。

@@ -1,6 +1,6 @@
-package com.example.yangyang.viewpagerdemo;
+package com.example.yangyang.viewpagerdemo.widget;
 
-import android.widget.ImageView;
+import com.example.yangyang.viewpagerdemo.model.Headwear;
 
 import java.util.List;
 

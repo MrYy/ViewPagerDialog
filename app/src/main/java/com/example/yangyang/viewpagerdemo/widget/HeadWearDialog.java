@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo;
+package com.example.yangyang.viewpagerdemo.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,14 +8,18 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 
-import java.util.Collections;
+import com.example.yangyang.viewpagerdemo.model.Headwear;
+import com.example.yangyang.viewpagerdemo.adapter.HeadwearPagerAdapter;
+import com.example.yangyang.viewpagerdemo.R;
+import com.example.yangyang.viewpagerdemo.sdk.SSViewPager;
+
 import java.util.List;
 
 /**
  * Created by yangyang on 2017/2/17.
  */
 
-public class HeadWearDialog  extends Dialog{
+public class HeadWearDialog extends Dialog {
     private static final String TAG = HeadWearDialog.class.getSimpleName();
     private int NONE_SELECT_ICON = R.drawable.bg_dot_normal;
     public static final int PAGE_SIZE = 8;
@@ -73,7 +77,6 @@ public class HeadWearDialog  extends Dialog{
 
             @Override
             public void onPageSelected(int position) {
-                Log.d(TAG, String.valueOf(position));
                 mViewPagerShower.onPageSelect(position);
             }
 

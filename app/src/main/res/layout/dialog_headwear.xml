@@ -4,12 +4,12 @@
     android:background="@color/hs_s1_90"
     android:layout_height="220dp">
 
-    <com.example.yangyang.viewpagerdemo.SSViewPager
+    <com.example.yangyang.viewpagerdemo.sdk.SSViewPager
         android:id="@+id/headwear_pager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.example.yangyang.viewpagerdemo.ViewPagerShower
+    <com.example.yangyang.viewpagerdemo.widget.ViewPagerShower
         android:id="@+id/headwear_pager_shower"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal|center_vertical"

@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo;
+package com.example.yangyang.viewpagerdemo.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.example.yangyang.viewpagerdemo.R;
 
 import java.util.ArrayList;
 

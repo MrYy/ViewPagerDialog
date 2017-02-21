@@ -2,19 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/bg_item_headwear"
+        <FrameLayout
             android:layout_width="65dp"
             android:layout_marginTop="29dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_height="65dp">
+                <ImageView
+                    android:id="@+id/headwear_not_download_img"
+                    android:layout_gravity="bottom|right"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp" />
+        <RelativeLayout
+            android:id="@+id/headwear_item_bg"
+            android:layout_width="65dp"
+
+            android:layout_height="65dp">
+
+
         <ImageView
             android:layout_centerInParent="true"
-            android:id="@+id/headwear_item"
+            android:id="@+id/headwear_item_img"
             android:layout_width="50dp"
             android:layout_height="50dp" />
+
         </RelativeLayout>
+        </FrameLayout>
 
 </RelativeLayout>

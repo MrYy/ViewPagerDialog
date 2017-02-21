@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo;
+package com.example.yangyang.viewpagerdemo.adapter;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -8,6 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.yangyang.viewpagerdemo.sdk.AbsPagerAdapter;
+import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
+import com.example.yangyang.viewpagerdemo.R;
+import com.example.yangyang.viewpagerdemo.model.Headwear;
+import com.example.yangyang.viewpagerdemo.widget.HeadWearDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +22,7 @@ import java.util.List;
  * Created by yangyang on 2017/2/17.
  */
 
-public class HeadwearPagerAdapter extends AbsPagerAdapter  {
+public class HeadwearPagerAdapter extends AbsPagerAdapter {
     private static final String TAG = HeadwearPagerAdapter.class.getSimpleName();
     private Context mContext;
     private ViewPager mViewPager;

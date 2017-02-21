@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo;
+package com.example.yangyang.viewpagerdemo.adapter;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
+import com.example.yangyang.viewpagerdemo.R;
+import com.example.yangyang.viewpagerdemo.model.Headwear;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +22,8 @@ import java.util.List;
  */
 
 public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecylerAdapter.HeadwearViewHolder> implements View.OnClickListener {
+    private static final int BACKGROUND_ICON = R.drawable.headwear_circle;
+    private static final int NOT_DOWNLOAD_ICON = R.drawable.not_download;
     private final static String TAG = HeadwearRecylerAdapter.class.getSimpleName();
     private Context mContext;
     private LayoutInflater mInflater;
@@ -25,6 +31,7 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
     private ViewPager mViewPager;
     private IHeadwear mIHeadwear;
     private HeadwearPagerAdapter.SelectHeadwearInterface mISelectHeadwear;
+
     public HeadwearRecylerAdapter(Context context, ViewPager viewPager, IHeadwear iHeadwear, HeadwearPagerAdapter.SelectHeadwearInterface ISelectHeadwear) {
         mSinglePageIconList = new ArrayList<>();
         mContext = context;
@@ -45,8 +52,8 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         holder.mIconImg.setImageResource(mSinglePageIconList.get(position).getmResId());
         holder.mIconImg.setTag(position);
         holder.mIconImg.setOnClickListener(this);
-        holder.mBgLayout.setBackgroundResource(curSelect.isSelected() ? R.drawable.headwear_circle : 0);
-
+        holder.mBgLayout.setBackgroundResource(curSelect.isSelected() ? BACKGROUND_ICON : 0);
+        holder.mNotDownloadIcon.setBackgroundResource(curSelect.isNotDownload() ? NOT_DOWNLOAD_ICON : 0);
     }
 
 
@@ -80,11 +87,13 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
 
         ImageView mIconImg;
         RelativeLayout mBgLayout;
+        ImageView mNotDownloadIcon;
 
         public HeadwearViewHolder(View itemView) {
             super(itemView);
-            mIconImg = (ImageView) itemView.findViewById(R.id.headwear_item);
-            mBgLayout = (RelativeLayout) itemView.findViewById(R.id.bg_item_headwear);
+            mIconImg = (ImageView) itemView.findViewById(R.id.headwear_item_img);
+            mBgLayout = (RelativeLayout) itemView.findViewById(R.id.headwear_item_bg);
+            mNotDownloadIcon = (ImageView) itemView.findViewById(R.id.headwear_not_download_img);
         }
     }
 
