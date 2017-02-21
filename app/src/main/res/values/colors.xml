@@ -8,7 +8,7 @@
 
 
     <!--下面是headwear用到的素材-->
-    <color name="headwear_page_bg_color">#47000000</color>
+    <color name="headwear_page_bg_color">#80000000</color>
     <color name="headwear_circle_color">#FFD630</color>
     <color name="headwear_dot_grey">#FF999999</color>
     <color name="headwear_dot_white">#e6cccccc</color>
