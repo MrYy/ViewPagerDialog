@@ -113,6 +113,13 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
         mIconList = iconList;
         mLastSelectHeadwear = iconList.get(0);
     }
+
+    public void finishDownload(int selected, Headwear headwear) {
+        if (!headwear.isNotDownload()) return;
+        headwear.setNotDownload(false);
+        mPageAdapterList.get(selected).notifyDataSetChanged();
+    }
+
     static class HeadwearPageViewHolder{
         RecyclerView mRecyclerView;
         HeadwearRecylerAdapter mRecylerAdapter;

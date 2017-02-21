@@ -26,6 +26,7 @@ public class HeadWearDialog extends Dialog {
     // TODO: 2017/2/17 主要逻辑先放在dialog中，后续抽离presenter。
     private SSViewPager mHeadwearPager;
     private ViewPagerShower mViewPagerShower;
+    private HeadwearPagerAdapter mHeadwearPagerAdapter;
     //获取头饰icons。
     private IHeadwear mHeadwearInterface;
     private List<Headwear> mIconList;
@@ -62,13 +63,13 @@ public class HeadWearDialog extends Dialog {
         mViewPagerShower = (ViewPagerShower) findViewById(R.id.headwear_pager_shower);
 
         mHeadwearPager = (SSViewPager) findViewById(R.id.headwear_pager);
-        HeadwearPagerAdapter headwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager, mHeadwearInterface);
+        mHeadwearPagerAdapter = new HeadwearPagerAdapter(mContext, mHeadwearPager, mHeadwearInterface);
 
-        headwearPagerAdapter.setIconList(mIconList);
+        mHeadwearPagerAdapter.setIconList(mIconList);
         mViewPagerShower.initDrawable(mContext.getResources().getDrawable(R.drawable.bg_dot_normal),
                 mContext.getResources().getDrawable(R.drawable.bg_dot_selected));
-        mViewPagerShower.initViews(headwearPagerAdapter.getPageCount(), 0);
-        mHeadwearPager.setAdapter(headwearPagerAdapter);
+        mViewPagerShower.initViews(mHeadwearPagerAdapter.getPageCount(), 0);
+        mHeadwearPager.setAdapter(mHeadwearPagerAdapter);
         mHeadwearPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -87,6 +88,11 @@ public class HeadWearDialog extends Dialog {
         });
 
 
+    }
+
+    public void finishDownload(Headwear headwear) {
+        int selectedPage = mHeadwearPager.getCurrentItem();
+        mHeadwearPagerAdapter.finishDownload(selectedPage, headwear);
     }
 
 

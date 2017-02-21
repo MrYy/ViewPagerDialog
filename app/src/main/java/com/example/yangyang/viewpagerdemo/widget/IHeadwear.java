@@ -17,4 +17,5 @@ public interface IHeadwear {
 
     //选择某个头饰
     void selectHeadwear(Headwear headwear);
+
 }

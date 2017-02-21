@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
     private int mWearCount = 16;
+    private HeadWearDialog headWearDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void selectNoneHeadwear() {
+                        //主线程中，取消头饰
                     }
 
                     @Override
                     public void selectHeadwear(Headwear headwear) {
+                        //下载头饰
+
+                        //完成下载
+                        headWearDialog.finishDownload(headwear);
+
                     }
+
+
 
 
                 });
@@ -65,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     //使用方法。
     private void showHeadwearDialog(final Context context, IHeadwear iHeadwear) {
-        HeadWearDialog headWearDialog = new HeadWearDialog(context, iHeadwear);
+        headWearDialog = new HeadWearDialog(context, iHeadwear);
         //设置图片资源drawable数组。
         headWearDialog.show();
 
