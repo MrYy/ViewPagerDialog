@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 使用方法。
- * 实例化HeadwearDialog
- * 给入接口，获取headwear，目前是设置resource ID，
+ * 使用方法
+ * 实现IHeadwear，
+ * 如果需要某些信息，可以在 Headwear中进行 set 和 get
  */
 public class MainActivity extends AppCompatActivity {
     private int mWearCount = 16;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 showHeadwearDialog(MainActivity.this, new IHeadwear() {
                     @Override
                     public List<Headwear> getHeadwear() {
+                        //获取 headwear 封装，目前仅封装了图片 uri 的信息，是否已经下载的信息。
                         List<Headwear> list = new ArrayList<>();
                         for (int i = 0; i < mWearCount; i++) {
                             Headwear headwear = new Headwear();
