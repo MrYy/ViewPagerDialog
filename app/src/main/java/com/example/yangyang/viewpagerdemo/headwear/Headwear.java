@@ -23,14 +23,7 @@ public class Headwear {
         this.notDownload = notDownload;
     }
 
-    protected boolean isSelected() {
-        return isSelected;
-    }
 
-
-    protected void setSelected(boolean selected) {
-        isSelected = selected;
-    }
 
     public String getUri() {
         return mUri;
@@ -38,6 +31,15 @@ public class Headwear {
 
     public void setUri(String uri) {
         mUri = uri;
+    }
+
+
+    protected boolean isSelected() {
+        return isSelected;
+    }
+
+    protected void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
 

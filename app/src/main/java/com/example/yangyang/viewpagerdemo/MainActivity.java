@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.yangyang.viewpagerdemo.model.Headwear;
-import com.example.yangyang.viewpagerdemo.widget.HeadWearDialog;
-import com.example.yangyang.viewpagerdemo.widget.IHeadwear;
+import com.example.yangyang.viewpagerdemo.headwear.Headwear;
+import com.example.yangyang.viewpagerdemo.headwear.HeadWearDialog;
+import com.example.yangyang.viewpagerdemo.headwear.IHeadwear;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.util.ArrayList;
