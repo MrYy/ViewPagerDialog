@@ -3,7 +3,7 @@
     android:shape="oval"
     android:useLevel="false">
 
-    <solid android:color="@color/dark_yellow" />
+    <solid android:color="@color/headwear_circle_color" />
 
     <size
         android:width="6dp"

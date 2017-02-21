@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
-    <color name="hs_s1_90">#47000000</color>
-    <color name="white">#e6cccccc</color>
-    <color name="light_yellow">#faebab</color>
-    <color name="dark_yellow">#FFD630</color>
-    <color name="grey">#FF999999</color>
+
+
+
+    <!--下面是headwear用到的素材-->
+    <color name="headwear_page_bg_color">#47000000</color>
+    <color name="headwear_circle_color">#FFD630</color>
+    <color name="headwear_dot_grey">#FF999999</color>
+    <color name="headwear_dot_white">#e6cccccc</color>
+
 </resources>

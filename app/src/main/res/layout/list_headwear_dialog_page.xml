@@ -6,5 +6,5 @@
         android:id="@+id/headwear_page_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/hs_s1_90" />
+        android:background="@color/headwear_page_bg_color" />
 </LinearLayout>

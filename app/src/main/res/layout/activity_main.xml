@@ -10,7 +10,7 @@ android:layout_height="match_parent">
         android:gravity="center"
         android:layout_width="match_parent"
         android:hint="输入头饰总数"
-        android:background="@color/white"
+        android:background="@color/headwear_dot_white"
         android:inputType="number"
         android:layout_height="wrap_content" />
 <Button
