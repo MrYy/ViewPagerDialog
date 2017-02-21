@@ -1,4 +1,4 @@
-package com.example.yangyang.viewpagerdemo.widget;
+package com.example.yangyang.viewpagerdemo.sdk;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
