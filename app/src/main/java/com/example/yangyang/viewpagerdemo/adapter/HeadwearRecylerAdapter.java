@@ -80,12 +80,6 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         }
     }
 
-    // TODO: 2017/2/21  暂时遍历，后续可优化为记录上一次选择。
-    private void refreshIconStatus() {
-        for (Headwear headwear : mSinglePageIconList) {
-            headwear.setSelected(false);
-        }
-    }
 
     class HeadwearViewHolder extends RecyclerView.ViewHolder {
 
@@ -107,7 +101,4 @@ public class HeadwearRecylerAdapter extends RecyclerView.Adapter<HeadwearRecyler
         notifyDataSetChanged();
     }
 
-    private void clear() {
-        mSinglePageIconList.clear();
-    }
 }

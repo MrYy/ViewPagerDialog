@@ -23,13 +23,13 @@ import java.util.List;
  */
 
 public class HeadwearPagerAdapter extends AbsPagerAdapter {
+    private static final int LINE_SIZE = 4;
     private static final String TAG = HeadwearPagerAdapter.class.getSimpleName();
     private Context mContext;
     private ViewPager mViewPager;
     private List<Headwear> mIconList;
     private IHeadwear mIHeadwear;
     //每行有多少icon。
-    private int LINE_SIZE = 4;
 
     //每一页recylerview的adapter
     private List<HeadwearRecylerAdapter> mPageAdapterList;
