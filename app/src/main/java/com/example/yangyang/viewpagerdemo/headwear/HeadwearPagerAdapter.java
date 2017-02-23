@@ -72,6 +72,7 @@ public class HeadwearPagerAdapter extends AbsPagerAdapter {
             convertView = mInflater.inflate(R.layout.list_headwear_dialog_page, null);
             viewHolder.mRecyclerView = (RecyclerView) convertView.findViewById(R.id.headwear_page_list);
             viewHolder.mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, LINE_SIZE, GridLayoutManager.VERTICAL, false));
+            viewHolder.mRecyclerView.addItemDecoration(new HeadwearItemDecoration());
             convertView.setTag(viewHolder);
         }else {
             viewHolder = (HeadwearPageViewHolder) convertView.getTag();
