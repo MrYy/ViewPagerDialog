@@ -7,8 +7,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
-import com.example.yangyang.viewpagerdemo.headwear.Headwear;
 import com.example.yangyang.viewpagerdemo.headwear.HeadWearDialog;
+import com.example.yangyang.viewpagerdemo.headwear.Headwear;
 import com.example.yangyang.viewpagerdemo.headwear.IHeadwear;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
@@ -64,15 +64,17 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_pop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String editStr = mEditText.getText().toString().trim();
-                if (editStr.length() > 0) mWearCount = Integer.parseInt(editStr);
-                mDialog.show();
-                animate();
+//                String editStr = mEditText.getText().toString().trim();
+//                if (editStr.length() > 0) mWearCount = Integer.parseInt(editStr);
+//                mDialog.show();
+
+                MoreDialog more = new MoreDialog(MainActivity.this);
+                more.show();
             }
 
             private void animate() {
-//                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.pop);
-//                (findViewById(R.id.txt)).startAnimation(animation);
+                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.pop_in);
+                (findViewById(R.id.txt)).startAnimation(animation);
             }
         });
 

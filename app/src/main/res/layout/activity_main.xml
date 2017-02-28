@@ -21,5 +21,13 @@ android:layout_height="match_parent">
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 
-
+    <TextView
+        android:layout_below="@id/btn_pop"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txt"
+        android:textColor="@android:color/white"
+        android:text="菜单"
+        android:textSize="92dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
