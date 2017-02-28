@@ -3,6 +3,8 @@ package com.example.yangyang.viewpagerdemo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import com.example.yangyang.viewpagerdemo.headwear.Headwear;
@@ -65,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
                 String editStr = mEditText.getText().toString().trim();
                 if (editStr.length() > 0) mWearCount = Integer.parseInt(editStr);
                 mDialog.show();
+                animate();
+            }
+
+            private void animate() {
+//                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.pop);
+//                (findViewById(R.id.txt)).startAnimation(animation);
             }
         });
 

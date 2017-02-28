@@ -13,6 +13,7 @@ android:layout_height="match_parent">
         android:background="@color/headwear_dot_white"
         android:inputType="number"
         android:layout_height="wrap_content" />
+
 <Button
     android:id="@+id/btn_pop"
     android:text="pop"
